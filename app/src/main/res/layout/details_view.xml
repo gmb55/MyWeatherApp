@@ -23,10 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|center_vertical"
-            android:text="Presure" />
+            android:text="Pressure" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/presure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|center_vertical"
@@ -54,7 +54,7 @@
             android:text="Humidity" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/humidity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|center_vertical"
@@ -81,7 +81,7 @@
             android:text="Wind" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/wind"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|center_vertical"
