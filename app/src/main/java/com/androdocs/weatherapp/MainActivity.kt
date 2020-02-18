@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
     var cities: ArrayList<String> = ArrayList(7)
     var icons: ArrayList<String> = ArrayList(7)
     var temps: ArrayList<String> = ArrayList(7)
+    var pressure: ArrayList<String> = ArrayList(7)
     lateinit var location : String
+    lateinit var recyclerView : RecyclerView
     val key = "&appid=8118ed6ee68db2debfaaa5a44c832918"
 
     lateinit var newBTN : Button
@@ -44,6 +46,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        recyclerView = findViewById(R.id.rv_cities_list)
 
         if (isLocationEnabled()) {
 
@@ -77,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             return response
         }
 
-        override fun onPostExecute(result: String?) {
+        override fun onPostExecute(result: String) {
             super.onPostExecute(result)
 
             val jsonObj = JSONObject(result)
@@ -91,14 +95,12 @@ class MainActivity : AppCompatActivity() {
             icons.add(y,z)
             val v: String = list.getJSONObject(y).getJSONObject("main").getString("temp") + "°C"
             temps.add(y,v)
+            pressure.add("1000")
         }
 
 
-
-
-
             rv_cities_list.layoutManager = LinearLayoutManager(con)
-            rv_cities_list.adapter = IconAdapter(cities ,icons, temps, con)
+            rv_cities_list.adapter = IconAdapter(cities ,icons, temps, pressure, con)
         }
     }
 }
