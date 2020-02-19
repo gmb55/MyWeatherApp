@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.cities_list.view.*
 
-class IconAdapter(val items: ArrayList<String>,val items2: ArrayList<String>, val items3: ArrayList<String>, val childItem: ArrayList<String>, val context : Context) : RecyclerView.Adapter<ViewHolder>() {
+class IconAdapter(val items: ArrayList<String>,val items2: ArrayList<String>, val items3: ArrayList<String>, val items4: ArrayList<String>, val items5: ArrayList<String>, val items6: ArrayList<String>, val context : Context) : RecyclerView.Adapter<ViewHolder>() {
 
     var counter = ArrayList<Int>()
 
@@ -38,6 +39,12 @@ class IconAdapter(val items: ArrayList<String>,val items2: ArrayList<String>, va
         Picasso.get().load("http://openweathermap.org/img/wn/$icon@2x.png").into(holder.ivWeatherIcon)
 
         holder.tvTemp?.text = items3[position]
+
+        holder.details.pressure.text = items4[position]
+
+        holder.details.humidity.text = items5[position]
+
+        holder.details.wind.text = items6[position]
 
 
         holder.main.setOnClickListener {

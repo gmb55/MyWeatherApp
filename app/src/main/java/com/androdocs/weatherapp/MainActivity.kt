@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     var icons: ArrayList<String> = ArrayList(7)
     var temps: ArrayList<String> = ArrayList(7)
     var pressure: ArrayList<String> = ArrayList(7)
+    var humidity: ArrayList<String> = ArrayList(7)
+    var wind: ArrayList<String> = ArrayList(7)
     lateinit var location : String
     lateinit var recyclerView : RecyclerView
     val key = "&appid=8118ed6ee68db2debfaaa5a44c832918"
@@ -95,12 +97,18 @@ class MainActivity : AppCompatActivity() {
             icons.add(y,z)
             val v: String = list.getJSONObject(y).getJSONObject("main").getString("temp") + "°C"
             temps.add(y,v)
-            pressure.add("1000")
+            val p: String = list.getJSONObject(y).getJSONObject("main").getString("pressure") + "hPa"
+            pressure.add(y,p)
+            val h: String = list.getJSONObject(y).getJSONObject("main").getString("humidity") + "%"
+            humidity.add(y,h)
+            val w: String = list.getJSONObject(y).getJSONObject("wind").getString("speed") + "m/s"
+            wind.add(y,w)
+
         }
 
 
             rv_cities_list.layoutManager = LinearLayoutManager(con)
-            rv_cities_list.adapter = IconAdapter(cities ,icons, temps, pressure, con)
+            rv_cities_list.adapter = IconAdapter(cities ,icons, temps, pressure, humidity, wind, con)
         }
     }
 }
